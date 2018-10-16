@@ -52,8 +52,7 @@ def get_filters():
        if month not in (month_data) and not 'All':
            print("Please choose from the options given to you")
        else:
-           your_month = False
-      
+           your_month = False      
            
        #choose day of a week from available seven options 
        your_day = True
@@ -65,14 +64,9 @@ def get_filters():
            if day not in (week_data) and not 'All':
                print("Please choose from the options given to you")           
            else:
-              your_day = False
-              
+              your_day = False         
+               
       
-      # Do you want to see first five rows of column 
-      
-      
-       
-       
     #just a separator with forty dashes
     print('-'*40)
     
@@ -100,21 +94,19 @@ def load_data(city, month, day):
     #Choose to see first five rows of all available columns for your chosen city
     while True:
           five_rows = input("Enter 'yes' or 'no' to get first five rows of all columns: ").lower()
+          print('')
           if five_rows == "yes":
               print(df.head())
+              print('')
               break
           elif five_rows == "no":
               break
           else:
               print("please enter 'yes' or 'no'")
-              False
-
-   
-        
+              False        
             
     # Get datetime column from starttime
-    df['Start Time'] = pd.to_datetime(df['Start Time'])
-    
+    df['Start Time'] = pd.to_datetime(df['Start Time'])    
     
     # Extract month , day and hour from start time
     df['month'] = df['Start Time'].dt.month
@@ -124,10 +116,8 @@ def load_data(city, month, day):
     
     # Most common month
     common_month = df['month'].mode()
-    print("Most common month when no filter is applied: ", common_month)
-    
-            
-    
+    print("Most common month when no filter is applied: ", common_month)  
+                
     # Filter by month if 'all' is not an imput
     if month != 'All':
          
@@ -135,8 +125,7 @@ def load_data(city, month, day):
         try:
             df = df[df['month'] == month]
         except KeyError as error:
-            print("Error occured")
-            
+            print("Error occured")            
             
     # Filter by day to create a new data frame
     if day != 'All':
